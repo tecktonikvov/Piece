@@ -7,17 +7,8 @@ final class AddEventHeaderView: UIView {
     private let baseInfoImageView = UIImageView(image: R.image.add_base_info_icon())
     private let addPurchasesImageView = UIImageView(image: R.image.add_purchases_icon())
     private let addMemberImageView = UIImageView(image: R.image.add_member_icon())
-
-//    private var imageView: UIImageView {
-//        switch state {
-//        case .addBaseInfo:
-//            return UIImageView(image: R.image.add_base_info_icon())
-//        case .addMember:
-//            return UIImageView(image: R.image.add_purchases_icon())
-//        case .addPurchases:
-//            return UIImageView(image: R.image.add_member_icon())
-//        }
-//    }
+    
+    private lazy var imageItems = [baseInfoImageView, addPurchasesImageView, addMemberImageView]
     
     private let progressImageView = UIImageView(image: R.image.progress_mock())
     
@@ -25,16 +16,7 @@ final class AddEventHeaderView: UIView {
     private let addMemberImageSubtitleLabel = PTitleLabel(text: "Добавить учасников")
     private let addPurchasesSubtitleLabel = PTitleLabel(text: "Основная добавить покупки")
     
-    private var subtitleLabel: PTitleLabel {
-        switch state {
-        case .addBaseInfo:
-            return PTitleLabel(text: "Основная информация")
-        case .addMember:
-            return PTitleLabel(text: "Добавить учасников")
-        case .addPurchases:
-            return PTitleLabel(text: "Основная добавить покупки")
-        }
-    }
+    private lazy var labelItems = [baseInfoSubtitleLabel, addMemberImageSubtitleLabel, addPurchasesSubtitleLabel]
 
     private var state: AddEventHeaderViewState
      
@@ -59,7 +41,7 @@ final class AddEventHeaderView: UIView {
         baseInfoImageView.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.centerX.equalToSuperview()
-            $0.width.height.equalTo(24)
+            $0.width.height.equalTo(32)
         }
     }
     
@@ -77,6 +59,31 @@ final class AddEventHeaderView: UIView {
             $0.top.equalTo(baseInfoSubtitleLabel.snp.bottom).inset(-16)
             $0.centerX.equalToSuperview()
             $0.bottom.equalToSuperview()
+        }
+    }
+    
+    private func hideUI() {
+        UIView.animate(withDuration: 1) {
+            self.progressImageView.alpha = 0
+            self.imageItems.forEach { $0.alpha = 0 }
+            self.labelItems.forEach { $0.alpha = 0 }
+        }
+    }
+    
+    private func setState(_ state: AddEventHeaderViewState) {
+        hideUI()
+        UIView.animate(withDuration: 1) {
+            switch state {
+            case .addBaseInfo:
+                self.baseInfoImageView.alpha = 1
+                self.baseInfoSubtitleLabel.alpha = 1
+            case .addMember:
+                self.addMemberImageView.alpha = 1
+                self.addMemberImageSubtitleLabel.alpha = 1
+            case .addPurchases:
+                self.addPurchasesImageView.alpha = 1
+                self.addPurchasesSubtitleLabel.alpha = 1
+            }
         }
     }
     

@@ -19,11 +19,7 @@ protocol AddEventActionsDelegate: UIViewController {
         return view
     }()
     
-    private let separatorView: UIView = {
-        let view = UIView()
-        view.backgroundColor = R.color.gray_base()
-        return view
-    }()
+    private let separatorView = UnderlineView(isDark: true)
     
     private let headerInfoView = AddEventHeaderView(state: .addBaseInfo)
     
@@ -46,23 +42,20 @@ protocol AddEventActionsDelegate: UIViewController {
     init(viewModel: AddEventPageControllerViewModelInterface) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        configureView()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        navigationController?.tabBarController?.tabBar.isHidden = false
-        configureView()
-    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+           super.viewWillAppear(animated)
+            navigationController?.setNavigationBarHidden(true, animated: false)
+       }
 
     private func configureView() {
-        self.addChild(self.pageController)
-        // view.backgroundColor = R.color.white()
-        navigationController?.isNavigationBarHidden = true
-        view.addSubview(pageController.view)
+        view.backgroundColor = R.color.white()
         configureHeaderContainerView()
         configureHeaderInfoView()
         configureSeparatorView()
@@ -74,15 +67,15 @@ protocol AddEventActionsDelegate: UIViewController {
         headerContainerView.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(240)
         }
     }
     
     private func configureHeaderInfoView() {
-        view.addSubview(headerInfoView)
+        headerContainerView.addSubview(headerInfoView)
         headerInfoView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(32)
             $0.centerX.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(32)
         }
     }
     
@@ -95,6 +88,7 @@ protocol AddEventActionsDelegate: UIViewController {
         }
     }
     private func configurePageController() {
+        self.addChild(self.pageController)
         view.addSubview(pageController.view)
         pageController.view.snp.makeConstraints {
             $0.top.equalTo(separatorView.snp.bottom)

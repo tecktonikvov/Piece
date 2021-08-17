@@ -4,11 +4,12 @@
 import UIKit
 
 final class PTitleLabel: UILabel {
-    init(textColot: UIColor? = R.color.gray_base(), fontSize: CGFloat = 12, text: String) {
+    init(textColot: UIColor? = R.color.gray_base(), fontSize: CGFloat = 14, text: String) {
         super.init(frame: .zero)
-        self.text = text
+        self.setAttributedText(withLineSpacing: 7, text: text)
         self.textColor = textColot
         self.font = .systemFont(ofSize: fontSize)
+        self.numberOfLines = 0
     }
     
     required init?(coder: NSCoder) {

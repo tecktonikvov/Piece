@@ -21,6 +21,12 @@
 		040B4BF826CAE4D600CE2E3E /* AddEventPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040B4BF526CAE4D600CE2E3E /* AddEventPageController.swift */; };
 		040B4C0C26CAF7BC00CE2E3E /* PTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040B4C0B26CAF7BC00CE2E3E /* PTitleLabel.swift */; };
 		040B4C1426CAF81100CE2E3E /* AddEventHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040B4C1326CAF81100CE2E3E /* AddEventHeaderView.swift */; };
+		0418B78C26CC355900D637CC /* PButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0418B78B26CC355900D637CC /* PButton.swift */; };
+		0418B79526CC386600D637CC /* PTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0418B79426CC386600D637CC /* PTextFieldView.swift */; };
+		0418B79D26CC39DE00D637CC /* UnderlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0418B79C26CC39DE00D637CC /* UnderlineView.swift */; };
+		04FB642826CC437B0005B70E /* AddEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FB642726CC437B0005B70E /* AddEventViewModel.swift */; };
+		04FB642E26CC447A0005B70E /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FB642D26CC447A0005B70E /* Date+Extension.swift */; };
+		04FB643326CC4EF10005B70E /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FB643226CC4EF10005B70E /* UILabel+Extension.swift */; };
 		32AEB36139648610B16FE879 /* Pods_Piece_PieceUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBA55CFCF437FCB0D741F91C /* Pods_Piece_PieceUITests.framework */; };
 		45ECA728866BB27E826CB6A0 /* Pods_Piece.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E85A7E654089EC2EB76033F0 /* Pods_Piece.framework */; };
 		A67B09B2C5FB2597BA1A1488 /* Pods_PieceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F059495D05AA82EB27925312 /* Pods_PieceTests.framework */; };
@@ -64,6 +70,12 @@
 		040B4BF526CAE4D600CE2E3E /* AddEventPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventPageController.swift; sourceTree = "<group>"; };
 		040B4C0B26CAF7BC00CE2E3E /* PTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PTitleLabel.swift; sourceTree = "<group>"; };
 		040B4C1326CAF81100CE2E3E /* AddEventHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventHeaderView.swift; sourceTree = "<group>"; };
+		0418B78B26CC355900D637CC /* PButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PButton.swift; sourceTree = "<group>"; };
+		0418B79426CC386600D637CC /* PTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PTextFieldView.swift; sourceTree = "<group>"; };
+		0418B79C26CC39DE00D637CC /* UnderlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlineView.swift; sourceTree = "<group>"; };
+		04FB642726CC437B0005B70E /* AddEventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventViewModel.swift; sourceTree = "<group>"; };
+		04FB642D26CC447A0005B70E /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		04FB643226CC4EF10005B70E /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		4774B789288C942D9F6ACCB2 /* Pods-PieceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PieceTests.debug.xcconfig"; path = "Target Support Files/Pods-PieceTests/Pods-PieceTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4949644B5BFAB43748E17911 /* Pods-Piece.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Piece.release.xcconfig"; path = "Target Support Files/Pods-Piece/Pods-Piece.release.xcconfig"; sourceTree = "<group>"; };
 		4C1350714DBE35199A4AFABC /* Pods-Piece-PieceUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Piece-PieceUITests.debug.xcconfig"; path = "Target Support Files/Pods-Piece-PieceUITests/Pods-Piece-PieceUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -129,6 +141,7 @@
 		040B4B9126CAE30800CE2E3E /* Piece */ = {
 			isa = PBXGroup;
 			children = (
+				04FB642C26CC44600005B70E /* Extension */,
 				040B4C0226CAF77200CE2E3E /* Common */,
 				040B4BF026CAE4D600CE2E3E /* Flow */,
 				040B4B9226CAE30800CE2E3E /* AppDelegate.swift */,
@@ -163,6 +176,7 @@
 		040B4BF026CAE4D600CE2E3E /* Flow */ = {
 			isa = PBXGroup;
 			children = (
+				0418B78926CC352400D637CC /* New Group */,
 				040B4BF126CAE4D600CE2E3E /* AddViewController */,
 				040B4BF326CAE4D600CE2E3E /* AddPageController */,
 			);
@@ -173,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				040B4BF226CAE4D600CE2E3E /* AddViewController.swift */,
+				04FB642726CC437B0005B70E /* AddEventViewModel.swift */,
 			);
 			path = AddViewController;
 			sourceTree = "<group>";
@@ -197,6 +212,8 @@
 		040B4C0326CAF77700CE2E3E /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				0418B79326CC385800D637CC /* TextField */,
+				0418B78A26CC354600D637CC /* Button */,
 				040B4C0A26CAF7AF00CE2E3E /* Label */,
 				040B4C0426CAF78400CE2E3E /* View */,
 			);
@@ -207,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				040B4C1326CAF81100CE2E3E /* AddEventHeaderView.swift */,
+				0418B79C26CC39DE00D637CC /* UnderlineView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -217,6 +235,38 @@
 				040B4C0B26CAF7BC00CE2E3E /* PTitleLabel.swift */,
 			);
 			path = Label;
+			sourceTree = "<group>";
+		};
+		0418B78926CC352400D637CC /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		0418B78A26CC354600D637CC /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				0418B78B26CC355900D637CC /* PButton.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
+		0418B79326CC385800D637CC /* TextField */ = {
+			isa = PBXGroup;
+			children = (
+				0418B79426CC386600D637CC /* PTextFieldView.swift */,
+			);
+			path = TextField;
+			sourceTree = "<group>";
+		};
+		04FB642C26CC44600005B70E /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				04FB642D26CC447A0005B70E /* Date+Extension.swift */,
+				04FB643226CC4EF10005B70E /* UILabel+Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		AB73E4510D23BA3814E055FC /* Frameworks */ = {
@@ -521,13 +571,19 @@
 				040B4B9D26CAE30800CE2E3E /* Piece.xcdatamodeld in Sources */,
 				040B4B9726CAE30800CE2E3E /* ViewController.swift in Sources */,
 				040B4C1426CAF81100CE2E3E /* AddEventHeaderView.swift in Sources */,
+				0418B78C26CC355900D637CC /* PButton.swift in Sources */,
+				0418B79526CC386600D637CC /* PTextFieldView.swift in Sources */,
+				04FB642E26CC447A0005B70E /* Date+Extension.swift in Sources */,
 				040B4BF626CAE4D600CE2E3E /* AddViewController.swift in Sources */,
 				040B4BF826CAE4D600CE2E3E /* AddEventPageController.swift in Sources */,
+				04FB643326CC4EF10005B70E /* UILabel+Extension.swift in Sources */,
 				040B4BE426CAE3FD00CE2E3E /* R.generated.swift in Sources */,
 				040B4BF726CAE4D600CE2E3E /* AddEventPageControllerViewModel.swift in Sources */,
 				040B4B9326CAE30800CE2E3E /* AppDelegate.swift in Sources */,
 				040B4B9526CAE30800CE2E3E /* SceneDelegate.swift in Sources */,
 				040B4C0C26CAF7BC00CE2E3E /* PTitleLabel.swift in Sources */,
+				0418B79D26CC39DE00D637CC /* UnderlineView.swift in Sources */,
+				04FB642826CC437B0005B70E /* AddEventViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
