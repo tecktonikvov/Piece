@@ -24,8 +24,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
     }
     
-    private func getViewControllers() -> [AddEventActionsDelegate] {
-        [AddViewController(bg: R.color.white() ?? UIColor()), AddViewController(bg: R.color.gray_lighter() ?? UIColor())]
+    private func getViewControllers() -> [ChildPageViewControllerInterface] {
+        let memberViewModel = AddMemberViewModel()
+        return [AddBaseInfoViewController(),
+                AddMemberViewController(viewModel: memberViewModel),
+                AddPurchachesViewController()]
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

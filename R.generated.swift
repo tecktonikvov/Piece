@@ -339,7 +339,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 4 images.
+  /// This `R.image` struct is generated, and contains static references to 5 images.
   struct image {
     /// Image `add_base_info_icon`.
     static let add_base_info_icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "add_base_info_icon")
@@ -347,8 +347,10 @@ struct R: Rswift.Validatable {
     static let add_member_icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "add_member_icon")
     /// Image `add_purchases_icon`.
     static let add_purchases_icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "add_purchases_icon")
-    /// Image `progress_mock`.
-    static let progress_mock = Rswift.ImageResource(bundle: R.hostingBundle, name: "progress_mock")
+    /// Image `avatar_placeholder_image`.
+    static let avatar_placeholder_image = Rswift.ImageResource(bundle: R.hostingBundle, name: "avatar_placeholder_image")
+    /// Image `calendar_icon`.
+    static let calendar_icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "calendar_icon")
 
     #if os(iOS) || os(tvOS)
     /// `UIImage(named: "add_base_info_icon", bundle: ..., traitCollection: ...)`
@@ -372,9 +374,16 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "progress_mock", bundle: ..., traitCollection: ...)`
-    static func progress_mock(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.progress_mock, compatibleWith: traitCollection)
+    /// `UIImage(named: "avatar_placeholder_image", bundle: ..., traitCollection: ...)`
+    static func avatar_placeholder_image(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.avatar_placeholder_image, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "calendar_icon", bundle: ..., traitCollection: ...)`
+    static func calendar_icon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.calendar_icon, compatibleWith: traitCollection)
     }
     #endif
 

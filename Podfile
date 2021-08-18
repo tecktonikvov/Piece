@@ -10,6 +10,7 @@ target 'Piece' do
 pod 'SwiftLint'
 pod 'R.swift'
 pod 'SnapKit'
+pod 'StepIndicator', '~> 1.0.8'
 
   target 'PieceTests' do
     inherit! :search_paths

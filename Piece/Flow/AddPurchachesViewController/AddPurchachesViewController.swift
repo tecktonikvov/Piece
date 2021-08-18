@@ -4,12 +4,36 @@
 import UIKit
 import SnapKit
 
-final class AddViewController: UIViewController, AddEventActionsDelegate {
+final class AddPurchachesViewController: UIViewController, ChildPageViewControllerInterface {
+    
+    
+    weak var delegate: AddEventStepsControllDelegate?
     
     private let titleTextFielLabel = PTitleLabel(textColot: R.color.gray_dark(), fontSize: 16, text: "Название")
     private let dateTextFielLabel = PTitleLabel(textColot: R.color.gray_dark(), fontSize: 16, text: "Дата")
     
-    private let nextButton = PButton(title: "Далее")
+    private lazy var nextButton: PButton = {
+        let button = PButton(title: "Создать")
+        button.addTarget(self, action: #selector(nexButtonDidPressed), for: .touchUpInside)
+        return button
+    }()
+    
+    private lazy var previousButton: PButtonFramed = {
+        let button = PButtonFramed(title: "Назад")
+        button.setBackgroundColor(.clear)
+        button.addTarget(self, action: #selector(previousButtonDidPressed), for: .touchUpInside)
+        return button
+    }()
+        
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.addArrangedSubview(previousButton)
+        stackView.addArrangedSubview(nextButton)
+        stackView.distribution = .fillProportionally
+        stackView.spacing = 16
+        return stackView
+    }()
+    
     private let titleTextField = PTextFieldView()
     
     private let dateTextField: PTextFieldView = {
@@ -30,19 +54,9 @@ final class AddViewController: UIViewController, AddEventActionsDelegate {
     
     private let dateImageView = UIImageView(image: R.image.calendar_icon())
     
-    init(bg: UIColor) {
-        super.init(nibName: nil, bundle: nil)
-        view.backgroundColor = bg
-        configureView()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .red
+        configureView()
     }
     
     private func configureView() {
@@ -53,7 +67,7 @@ final class AddViewController: UIViewController, AddEventActionsDelegate {
         configureDateTextField()
         configureDateImageView()
         configureSubtitleLabel()
-        configureNextButton()
+        configureStackview()
     }
     
     private func configuteTitleTextFieldLabel() {
@@ -113,25 +127,25 @@ final class AddViewController: UIViewController, AddEventActionsDelegate {
         }
     }
     
-    private func configureNextButton() {
-        view.addSubview(nextButton)
-        nextButton.snp.makeConstraints {
-            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(8)
+    private func configureStackview() {
+        view.addSubview(stackView)
+        stackView.snp.makeConstraints {
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(8)
             $0.leading.trailing.equalToSuperview().inset(32)
             $0.height.equalTo(44)
         }
     }
     
-    func nextButtonDidPressed() {
-        // TODO:
-    }
-    
-    func previousButtonDidPressd() {
-        // TODO:
-    }
-    
-    @objc func handleDatePicker(_ datePicker: UIDatePicker) {
+
+    @objc private func handleDatePicker(_ datePicker: UIDatePicker) {
         dateTextField.setText(datePicker.date.formatted)
     }
     
+    @objc private func nexButtonDidPressed() {
+        delegate?.nextButtonDidPressed()
+    }
+    
+    @objc private func previousButtonDidPressed() {
+        delegate?.previousButtonDidPressd()
+    }
 }

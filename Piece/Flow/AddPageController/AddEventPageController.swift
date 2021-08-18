@@ -1,12 +1,12 @@
 import SnapKit
 
-typealias AddEventPageControllerAdapter = UIPageViewControllerDelegate & UIPageViewControllerDataSource
+//typealias AddEventPageControllerAdapter = UIPageViewControllerDelegate & UIPageViewControllerDataSource
 
 protocol ChildPageViewControllerInterface: UIViewController {
-    var delegate: AddEventActionsDelegate? { get set }
+    var delegate: AddEventStepsControllDelegate? { get set }
 }
 
-protocol AddEventActionsDelegate: UIViewController {
+protocol AddEventStepsControllDelegate: UIViewController {
     func nextButtonDidPressed()
     func previousButtonDidPressd()
 }
@@ -18,26 +18,24 @@ protocol AddEventActionsDelegate: UIViewController {
         view.backgroundColor = R.color.gray_lighter()
         return view
     }()
-    
+        
     private let separatorView = UnderlineView(isDark: true)
     
     private let headerInfoView = AddEventHeaderView(state: .addBaseInfo)
     
     private lazy var pageController: UIPageViewController = {
         let pageController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
-        pageController.dataSource = self
-        pageController.delegate = self
-        if let controller = pageControllers.first {
+        //pageController.delegate = self
+        if let controller = childControllers.first {
             pageController.setViewControllers([controller], direction: .forward, animated: true, completion: nil)
         }
         return pageController
     }()
 
     private var currentIndex: Int = 0
+    private lazy var childControllers = viewModel.getControllers()
+    private let viewModel: AddEventPageControllerViewModelInterface
 
-    private var viewModel: AddEventPageControllerViewModelInterface
-
-    private lazy var pageControllers = viewModel.getControllers()
 
     init(viewModel: AddEventPageControllerViewModelInterface) {
         self.viewModel = viewModel
@@ -55,6 +53,7 @@ protocol AddEventActionsDelegate: UIViewController {
        }
 
     private func configureView() {
+        childControllers.forEach { $0.delegate = self }
         view.backgroundColor = R.color.white()
         configureHeaderContainerView()
         configureHeaderInfoView()
@@ -98,29 +97,47 @@ protocol AddEventActionsDelegate: UIViewController {
 
  }
 
-extension AddEventPageController: AddEventPageControllerAdapter {
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        let controllers = pageControllers as [UIViewController]
-        guard let viewControllerIndex = controllers.firstIndex(of: viewController) else { return nil }
-        let nextIndex = viewControllerIndex + 1
-        guard pageControllers.count != nextIndex else { return nil }
-        guard pageControllers.count > nextIndex else { return nil }
-        return controllers[nextIndex]
-    }
+//extension AddEventPageController: AddEventPageControllerAdapter {
+//    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+//        let controllers = childControllers as [UIViewController]
+//        guard let viewControllerIndex = controllers.firstIndex(of: viewController) else { return nil }
+//        let nextIndex = viewControllerIndex + 1
+//        guard childControllers.count != nextIndex else { return nil }
+//        guard childControllers.count > nextIndex else { return nil }
+//        return controllers[nextIndex]
+//    }
+//
+//    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+//        let controllers = childControllers as [UIViewController]
+//        guard let viewControllerIndex = controllers.firstIndex(of: viewController) else { return nil }
+//        let previousIndex = viewControllerIndex - 1
+//        guard previousIndex >= 0 else { return nil }
+//        guard childControllers.count > previousIndex else { return nil }
+//        return controllers[previousIndex]
+//    }
 
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        let controllers = pageControllers as [UIViewController]
-        guard let viewControllerIndex = controllers.firstIndex(of: viewController) else { return nil }
-        let previousIndex = viewControllerIndex - 1
-        guard previousIndex >= 0 else { return nil }
-        guard pageControllers.count > previousIndex else { return nil }
-        return controllers[previousIndex]
-    }
+//    func pageViewController(_: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
+//        guard let destinationViewController = pendingViewControllers.first else { return }
+//        let controllers = childControllers as [UIViewController]
+//        guard let viewControllerIndex = controllers.firstIndex(of: destinationViewController) else { return }
+//        currentIndex = viewControllerIndex
+//    }
+//}
 
-    func pageViewController(_: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
-        guard let destinationViewController = pendingViewControllers.first else { return }
-        let controllers = pageControllers as [UIViewController]
-        guard let viewControllerIndex = controllers.firstIndex(of: destinationViewController) else { return }
-        currentIndex = viewControllerIndex
+extension AddEventPageController: AddEventStepsControllDelegate {
+    public func nextButtonDidPressed() {
+        let nextIndex = currentIndex + 1
+        let nextController = childControllers[nextIndex]
+        pageController.setViewControllers([nextController], direction: .forward, animated: true, completion: nil)
+        headerInfoView.setNextStep()
+        currentIndex += 1
+    }
+    
+    public func previousButtonDidPressd() {
+        let previousIndex = currentIndex - 1
+        let previousController = childControllers[previousIndex]
+        pageController.setViewControllers([previousController], direction: .reverse, animated: true, completion: nil)
+        headerInfoView.setPreviousStep()
+        currentIndex -= 1
     }
 }

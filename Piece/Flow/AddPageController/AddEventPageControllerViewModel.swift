@@ -3,19 +3,18 @@ import UIKit
 protocol PageControllerChildViewModelsInterface {}
 
 protocol AddEventPageControllerViewModelInterface {
-    func getControllers() -> [UIViewController]
+    func getControllers() -> [ChildPageViewControllerInterface]
 }
 
 final class AddEventPageControllerViewModel: AddEventPageControllerViewModelInterface {
 
-    private let childControllers: [AddEventActionsDelegate]
+    private let childControllers: [ChildPageViewControllerInterface]
 
-    init(childControllers: [AddEventActionsDelegate]) {
+    init(childControllers: [ChildPageViewControllerInterface]) {
         self.childControllers = childControllers
-       // childrenViewModels.forEach { $0.delegate = self }
     }
 
-    public func getControllers() -> [UIViewController] {
+    public func getControllers() -> [ChildPageViewControllerInterface] {
         childControllers
     }
 }
