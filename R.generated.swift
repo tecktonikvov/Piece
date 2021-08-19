@@ -105,7 +105,7 @@ struct R: Rswift.Validatable {
   }
   #endif
 
-  /// This `R.color` struct is generated, and contains static references to 12 colors.
+  /// This `R.color` struct is generated, and contains static references to 13 colors.
   struct color {
     /// Color `AccentColor`.
     static let accentColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "AccentColor")
@@ -119,6 +119,8 @@ struct R: Rswift.Validatable {
     static let gray_base = Rswift.ColorResource(bundle: R.hostingBundle, name: "gray_base")
     /// Color `gray_dark`.
     static let gray_dark = Rswift.ColorResource(bundle: R.hostingBundle, name: "gray_dark")
+    /// Color `gray_darkest`.
+    static let gray_darkest = Rswift.ColorResource(bundle: R.hostingBundle, name: "gray_darkest")
     /// Color `gray_light`.
     static let gray_light = Rswift.ColorResource(bundle: R.hostingBundle, name: "gray_light")
     /// Color `gray_lighter`.
@@ -183,6 +185,15 @@ struct R: Rswift.Validatable {
     @available(iOS 11.0, *)
     static func gray_dark(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
       return UIKit.UIColor(resource: R.color.gray_dark, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "gray_darkest", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func gray_darkest(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.gray_darkest, compatibleWith: traitCollection)
     }
     #endif
 
@@ -289,6 +300,14 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(watchOS)
+    /// `UIColor(named: "gray_darkest", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func gray_darkest(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.gray_darkest.name)
+    }
+    #endif
+
+    #if os(watchOS)
     /// `UIColor(named: "gray_light", bundle: ..., traitCollection: ...)`
     @available(watchOSApplicationExtension 4.0, *)
     static func gray_light(_: Void = ()) -> UIKit.UIColor? {
@@ -339,7 +358,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 5 images.
+  /// This `R.image` struct is generated, and contains static references to 6 images.
   struct image {
     /// Image `add_base_info_icon`.
     static let add_base_info_icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "add_base_info_icon")
@@ -351,6 +370,8 @@ struct R: Rswift.Validatable {
     static let avatar_placeholder_image = Rswift.ImageResource(bundle: R.hostingBundle, name: "avatar_placeholder_image")
     /// Image `calendar_icon`.
     static let calendar_icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "calendar_icon")
+    /// Image `selected_icon`.
+    static let selected_icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "selected_icon")
 
     #if os(iOS) || os(tvOS)
     /// `UIImage(named: "add_base_info_icon", bundle: ..., traitCollection: ...)`
@@ -384,6 +405,13 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "calendar_icon", bundle: ..., traitCollection: ...)`
     static func calendar_icon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.calendar_icon, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "selected_icon", bundle: ..., traitCollection: ...)`
+    static func selected_icon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.selected_icon, compatibleWith: traitCollection)
     }
     #endif
 

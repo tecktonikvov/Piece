@@ -30,8 +30,9 @@ final class AddMemberViewController: UIViewController, ChildPageViewControllerIn
         return stackView
     }()
     
-    private let searchView: UISearchBar = {
+    private lazy var searchView: UISearchBar = {
         let bar = UISearchBar()
+        bar.delegate = self
         bar.backgroundImage = UIImage()
         bar.setTextColor(R.color.text_base())
         return bar
@@ -52,7 +53,6 @@ final class AddMemberViewController: UIViewController, ChildPageViewControllerIn
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         configureView()
-
     }
     
     required init?(coder: NSCoder) {
@@ -61,6 +61,7 @@ final class AddMemberViewController: UIViewController, ChildPageViewControllerIn
     
     private func configureView() {
         configuteSearchView()
+        configureStackview()
         configureTableView()
     }
     
@@ -68,7 +69,16 @@ final class AddMemberViewController: UIViewController, ChildPageViewControllerIn
         view.addSubview(searchView)
         searchView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(12)
+            $0.leading.trailing.equalToSuperview().inset(16)
+        }
+    }
+    
+    private func configureStackview() {
+        view.addSubview(stackView)
+        stackView.snp.makeConstraints {
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(8)
             $0.leading.trailing.equalToSuperview().inset(32)
+            $0.height.equalTo(44)
         }
     }
     
@@ -77,10 +87,9 @@ final class AddMemberViewController: UIViewController, ChildPageViewControllerIn
         tableView.snp.makeConstraints {
             $0.top.equalTo(searchView.snp.bottom).inset(-8)
             $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            $0.bottom.equalTo(stackView.snp.top)
         }
     }
-
     
     @objc private func nexButtonDidPressed() {
         delegate?.nextButtonDidPressed()
@@ -88,5 +97,12 @@ final class AddMemberViewController: UIViewController, ChildPageViewControllerIn
     
     @objc private func previousButtonDidPressed() {
         delegate?.previousButtonDidPressd()
+    }
+}
+
+extension AddMemberViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        viewModel.search(searchText)
+        tableView.reloadData()
     }
 }

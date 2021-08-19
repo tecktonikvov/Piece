@@ -26,9 +26,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     private func getViewControllers() -> [ChildPageViewControllerInterface] {
         let memberViewModel = AddMemberViewModel()
+        let purchachesViewModel = AddPurchachesViewModel()
         return [AddBaseInfoViewController(),
                 AddMemberViewController(viewModel: memberViewModel),
-                AddPurchachesViewController()]
+                AddPurchachesViewController(viewModel: purchachesViewModel)]
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

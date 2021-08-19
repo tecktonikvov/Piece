@@ -8,7 +8,7 @@ final class MemberFullCell: UITableViewCell {
     private let nameLabel = PTitleLabel(textColot: R.color.text_base(), fontSize: 18, text: "")
     private let phoneLabel = PTitleLabel(textColot: R.color.gray_base(), fontSize: 14, text: "")
     private let separatorView = UnderlineView()
-    
+    private let selectedIcon = UIImageView(image: R.image.selected_icon())
     
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView()
@@ -27,6 +27,12 @@ final class MemberFullCell: UITableViewCell {
         imageView.clipsToBounds = true
         return imageView
     }()
+    
+    private var isCellSelected = false {
+        didSet {
+            selectedIcon.isHidden = !isCellSelected
+        }
+    }
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -38,8 +44,10 @@ final class MemberFullCell: UITableViewCell {
     }
     
     private func configureCell() {
+        selectionStyle = .none
         configureStackView()
         configureAvatarImageView()
+        configureSelectedIcon()
         configureSeparatorView()
     }
     
@@ -60,6 +68,15 @@ final class MemberFullCell: UITableViewCell {
             $0.width.height.equalTo(40)
         }
     }
+    
+    private func configureSelectedIcon() {
+        contentView.addSubview(selectedIcon)
+        selectedIcon.isHidden = true
+        selectedIcon.snp.makeConstraints {
+            $0.centerY.equalTo(stackView)
+            $0.trailing.equalToSuperview().inset(32)
+        }
+    }
         
     private func configureSeparatorView() {
         contentView.addSubview(separatorView)
@@ -76,6 +93,14 @@ final class MemberFullCell: UITableViewCell {
         phoneLabel.text = phone
         let imageUrl: String = imageUrl ?? String.imageUrlMock
         avatarImageView.loadImageUsingCacheWithUrlString(urlString: imageUrl)
+    }
+    
+    public func select() {
+        isCellSelected.toggle()
+    }
+    
+    public func getIsCellSelected() -> Bool {
+        isCellSelected
     }
     
 }

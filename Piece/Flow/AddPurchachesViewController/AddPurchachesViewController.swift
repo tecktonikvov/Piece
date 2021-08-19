@@ -6,12 +6,8 @@ import SnapKit
 
 final class AddPurchachesViewController: UIViewController, ChildPageViewControllerInterface {
     
-    
     weak var delegate: AddEventStepsControllDelegate?
-    
-    private let titleTextFielLabel = PTitleLabel(textColot: R.color.gray_dark(), fontSize: 16, text: "Название")
-    private let dateTextFielLabel = PTitleLabel(textColot: R.color.gray_dark(), fontSize: 16, text: "Дата")
-    
+        
     private lazy var nextButton: PButton = {
         let button = PButton(title: "Создать")
         button.addTarget(self, action: #selector(nexButtonDidPressed), for: .touchUpInside)
@@ -34,96 +30,67 @@ final class AddPurchachesViewController: UIViewController, ChildPageViewControll
         return stackView
     }()
     
-    private let titleTextField = PTextFieldView()
-    
-    private let dateTextField: PTextFieldView = {
-        let textField = PTextFieldView()
-        textField.setText(Date().formatted)
-        textField.isUserInteractionEnabled = false
-        return textField
+    private lazy var titlesContainerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = R.color.gray_lighter()
+        view.layer.cornerRadius = 4
+        return view
     }()
     
-    private lazy var datePicker: UIDatePicker = {
-        let datePicker = UIDatePicker()
-        datePicker.locale = NSLocale(localeIdentifier: "en_GB") as Locale // 24 hour time
-        datePicker.addTarget(self, action: #selector(handleDatePicker), for: .valueChanged)
-        return datePicker
+    private let itemLabel = PTitleLabel(textColot: R.color.gray_darkest(), fontSize: 16, text: "Название")
+    private let priceLabel = PTitleLabel(textColot: R.color.gray_darkest(), fontSize: 16, text: "Цена")
+
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .plain)
+        tableView.delegate = viewModel
+        tableView.dataSource = viewModel
+        tableView.separatorStyle = .none
+        tableView.register(MemberFullCell.self)
+        return tableView
     }()
     
-    private let subtitleLabel = PTitleLabel(fontSize: 14, text: "Введите название вашего мероприятия и выбрите дату, или оставьте текущуюю")
+    private let viewModel: AddPurchachesViewModelIntarface
     
-    private let dateImageView = UIImageView(image: R.image.calendar_icon())
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    init(viewModel: AddPurchachesViewModelIntarface) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
         configureView()
     }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     private func configureView() {
-        configuteTitleTextFieldLabel()
-        configureTitleTextField()
-        configuteDateTextFieldLabel()
-        configureDatePicker()
-        configureDateTextField()
-        configureDateImageView()
-        configureSubtitleLabel()
+        configuteTitlesContainerView()
+        configureItemLabel()
+        configurePriceLabel()
         configureStackview()
+        configureTableView()
     }
     
-    private func configuteTitleTextFieldLabel() {
-        view.addSubview(titleTextFielLabel)
-        titleTextFielLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(32)
-            $0.leading.equalToSuperview().inset(32)
+    private func configuteTitlesContainerView() {
+        view.addSubview(titlesContainerView)
+        titlesContainerView.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(24)
+            $0.height.equalTo(32)
+            $0.leading.trailing.equalToSuperview().inset(16)
         }
     }
     
-    private func configureTitleTextField() {
-        view.addSubview(titleTextField)
-        titleTextField.snp.makeConstraints {
-            $0.top.equalTo(titleTextFielLabel.snp.bottom).inset(-24)
-            $0.leading.trailing.equalToSuperview().inset(32)
+    private func configureItemLabel() {
+        titlesContainerView.addSubview(itemLabel)
+        itemLabel.snp.makeConstraints {
+            $0.leading.equalToSuperview().inset(16)
+            $0.top.equalToSuperview().inset(8)
         }
     }
     
-    private func configuteDateTextFieldLabel() {
-        view.addSubview(dateTextFielLabel)
-        dateTextFielLabel.snp.makeConstraints {
-            $0.top.equalTo(titleTextField.snp.bottom).inset(-32)
-            $0.leading.trailing.equalToSuperview().inset(32)
-        }
-    }
-    
-    private func configureDateTextField() {
-        view.addSubview(dateTextField)
-        dateTextField.snp.makeConstraints {
-            $0.top.equalTo(dateTextFielLabel.snp.bottom).inset(-24)
-            $0.leading.trailing.equalToSuperview().inset(32)
-        }
-    }
-    
-    private func configureDatePicker() {
-        view.addSubview(datePicker)
-        datePicker.snp.makeConstraints {
-            $0.top.equalTo(dateTextFielLabel.snp.bottom).inset(-24)
-            $0.leading.trailing.equalToSuperview().inset(32)
-        }
-    }
-    
-    private func configureDateImageView() {
-        view.addSubview(dateImageView)
-        dateImageView.snp.makeConstraints {
-            $0.height.width.equalTo(32)
-            $0.trailing.equalToSuperview().inset(48)
-            $0.centerY.equalTo(dateTextField.snp.top).inset(10)
-        }
-    }
-    
-    private func configureSubtitleLabel() {
-        view.addSubview(subtitleLabel)
-        subtitleLabel.snp.makeConstraints {
-            $0.top.equalTo(dateTextField.snp.bottom).inset(-24)
-            $0.leading.trailing.equalToSuperview().inset(32)
+    private func configurePriceLabel() {
+        titlesContainerView.addSubview(priceLabel)
+        priceLabel.snp.makeConstraints {
+            $0.trailing.equalToSuperview().inset(16)
+            $0.top.equalToSuperview().inset(8)
         }
     }
     
@@ -136,9 +103,13 @@ final class AddPurchachesViewController: UIViewController, ChildPageViewControll
         }
     }
     
-
-    @objc private func handleDatePicker(_ datePicker: UIDatePicker) {
-        dateTextField.setText(datePicker.date.formatted)
+    private func configureTableView() {
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints {
+            $0.top.equalTo(titlesContainerView.snp.bottom).inset(-8)
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(stackView.snp.top)
+        }
     }
     
     @objc private func nexButtonDidPressed() {

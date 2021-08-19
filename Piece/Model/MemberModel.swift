@@ -4,7 +4,7 @@
 import Foundation
 
 struct Member {
-    let name: String
+    var name: String
     let avatarUrl: String?
     let phone: String
     

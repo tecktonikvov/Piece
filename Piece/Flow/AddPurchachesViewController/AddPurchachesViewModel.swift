@@ -4,23 +4,17 @@
 import UIKit
 
 
-protocol AddMemberViewModelIntarface: TableViewAdapter {
-    func search(_ text: String)
+protocol AddPurchachesViewModelIntarface: TableViewAdapter {
 }
 
-final class AddMemberViewModel: NSObject, AddMemberViewModelIntarface {
+final class AddPurchachesViewModel: NSObject, AddPurchachesViewModelIntarface {
     private var model = Member.mock
-    private var initialModel = Member.mock
     
     private var selectedIndexes = [Int]()
     
-    public func search(_ text: String) {
-        let lowercaseText = text.lowercased()
-        model = text == "" ? initialModel : initialModel.filter { $0.name.lowercased().contains(lowercaseText) }
-    }
 }
  
-extension AddMemberViewModel  {
+extension AddPurchachesViewModel  {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         model.count
     }
