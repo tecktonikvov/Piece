@@ -17,23 +17,29 @@ final class AddBaseInfoViewController: UIViewController, ChildPageViewController
         return button
     }()
     
-    private let titleTextField = PTextFieldView()
+    private lazy var titleTextField: PTextFieldView = {
+        let textField = PTextFieldView(placeholder: "Рыбалка")
+        textField.setDelegate(self)
+        return textField
+    }()
     
-    private let dateTextField: PTextFieldView = {
+    private lazy var dateTextField: PTextFieldView = {
         let textField = PTextFieldView()
-        textField.setText(Date().formatted)
+        textField.setText(Date().getFormat(dateFormat))
         textField.isUserInteractionEnabled = false
         return textField
     }()
     
     private lazy var datePicker: UIDatePicker = {
         let datePicker = UIDatePicker()
-        datePicker.locale = NSLocale(localeIdentifier: "en_GB") as Locale // 24 hour time
+        datePicker.locale = NSLocale(localeIdentifier: "en_GB") as Locale // 24 hour time format
         datePicker.addTarget(self, action: #selector(handleDatePicker), for: .valueChanged)
         return datePicker
     }()
     
     private let subtitleLabel = PTitleLabel(fontSize: 14, text: "Введите название вашего мероприятия и выбрите дату, или оставьте текущуюю")
+    
+    private let dateFormat = "dd MMM yyyy HH:mm"
     
     private let dateImageView = UIImageView(image: R.image.calendar_icon())
     
@@ -43,6 +49,7 @@ final class AddBaseInfoViewController: UIViewController, ChildPageViewController
     }
     
     private func configureView() {
+        view.addGestureRecognizer(UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing(_:))))
         configuteTitleTextFieldLabel()
         configureTitleTextField()
         configuteDateTextFieldLabel()
@@ -120,11 +127,17 @@ final class AddBaseInfoViewController: UIViewController, ChildPageViewController
     }
 
     @objc private func handleDatePicker(_ datePicker: UIDatePicker) {
-        dateTextField.setText(datePicker.date.formatted)
+        dateTextField.setText(datePicker.date.getFormat(dateFormat))
     }
     
     @objc private func nexButtonDidPressed() {
         delegate?.nextButtonDidPressed()
     }
-    
+}
+
+extension AddBaseInfoViewController: UITextFieldDelegate {
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }

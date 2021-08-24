@@ -30,9 +30,18 @@
 		044CBF7226CD944A00B24B01 /* AddMemberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044CBF7126CD944A00B24B01 /* AddMemberViewModel.swift */; };
 		044CBF7826CD952100B24B01 /* TableViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044CBF7726CD952100B24B01 /* TableViewAdapter.swift */; };
 		044CBF7E26CD961D00B24B01 /* MemberFullCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044CBF7D26CD961D00B24B01 /* MemberFullCell.swift */; };
-		044CBF8326CD995C00B24B01 /* Cells+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044CBF8226CD995C00B24B01 /* Cells+Extension.swift */; };
 		044CBF8826CD9F8F00B24B01 /* UISearchBar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044CBF8726CD9F8F00B24B01 /* UISearchBar+Extension.swift */; };
 		044CBFAE26CEEC2900B24B01 /* AddPurchachesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044CBFAD26CEEC2800B24B01 /* AddPurchachesViewModel.swift */; };
+		044CBFB426D0DF4500B24B01 /* AddPurchacheCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044CBFB326D0DF4500B24B01 /* AddPurchacheCell.swift */; };
+		044CBFBC26D0DF6F00B24B01 /* PurchacheModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044CBFBB26D0DF6F00B24B01 /* PurchacheModel.swift */; };
+		044CBFC426D532F800B24B01 /* AddPurchaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044CBFC326D532F700B24B01 /* AddPurchaseButton.swift */; };
+		045D4FE626D53D7600BA1C20 /* AddPurchaseButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D4FE526D53D7600BA1C20 /* AddPurchaseButtonView.swift */; };
+		04B75DC526D5854600D6B215 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 04B75DC726D5854600D6B215 /* Localizable.stringsdict */; };
+		04C9A0B326D55677006B2FDE /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C9A0B226D55677006B2FDE /* UIViewController+Extension.swift */; };
+		04C9A0B826D56411006B2FDE /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C9A0B726D56411006B2FDE /* EventModel.swift */; };
+		04C9A0BF26D56655006B2FDE /* EventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C9A0BE26D56655006B2FDE /* EventListViewController.swift */; };
+		04C9A0C426D566F8006B2FDE /* EventListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C9A0C326D566F8006B2FDE /* EventListViewModel.swift */; };
+		04C9A0CA26D5679B006B2FDE /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C9A0C926D5679B006B2FDE /* EventCell.swift */; };
 		04D4283B26CD84AC00346FB6 /* AddMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D4283A26CD84AC00346FB6 /* AddMemberViewController.swift */; };
 		04D4284026CD863F00346FB6 /* PButtonFramed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D4283F26CD863F00346FB6 /* PButtonFramed.swift */; };
 		04D4285026CD8E5000346FB6 /* AddPurchachesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D4284F26CD8E5000346FB6 /* AddPurchachesViewController.swift */; };
@@ -91,9 +100,20 @@
 		044CBF7126CD944A00B24B01 /* AddMemberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberViewModel.swift; sourceTree = "<group>"; };
 		044CBF7726CD952100B24B01 /* TableViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewAdapter.swift; sourceTree = "<group>"; };
 		044CBF7D26CD961D00B24B01 /* MemberFullCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberFullCell.swift; sourceTree = "<group>"; };
-		044CBF8226CD995C00B24B01 /* Cells+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cells+Extension.swift"; sourceTree = "<group>"; };
 		044CBF8726CD9F8F00B24B01 /* UISearchBar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+Extension.swift"; sourceTree = "<group>"; };
 		044CBFAD26CEEC2800B24B01 /* AddPurchachesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPurchachesViewModel.swift; sourceTree = "<group>"; };
+		044CBFB326D0DF4500B24B01 /* AddPurchacheCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPurchacheCell.swift; sourceTree = "<group>"; };
+		044CBFBB26D0DF6F00B24B01 /* PurchacheModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchacheModel.swift; sourceTree = "<group>"; };
+		044CBFC326D532F700B24B01 /* AddPurchaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPurchaseButton.swift; sourceTree = "<group>"; };
+		045D4FE526D53D7600BA1C20 /* AddPurchaseButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPurchaseButtonView.swift; sourceTree = "<group>"; };
+		04B75DC626D5854600D6B215 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		04B75DC826D585CF00D6B215 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		04B75DC926D585D000D6B215 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ru; path = ru.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		04C9A0B226D55677006B2FDE /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		04C9A0B726D56411006B2FDE /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
+		04C9A0BE26D56655006B2FDE /* EventListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListViewController.swift; sourceTree = "<group>"; };
+		04C9A0C326D566F8006B2FDE /* EventListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListViewModel.swift; sourceTree = "<group>"; };
+		04C9A0C926D5679B006B2FDE /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		04D4283A26CD84AC00346FB6 /* AddMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberViewController.swift; sourceTree = "<group>"; };
 		04D4283F26CD863F00346FB6 /* PButtonFramed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PButtonFramed.swift; sourceTree = "<group>"; };
 		04D4284F26CD8E5000346FB6 /* AddPurchachesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPurchachesViewController.swift; sourceTree = "<group>"; };
@@ -174,6 +194,7 @@
 				040B4B9426CAE30800CE2E3E /* SceneDelegate.swift */,
 				040B4B9626CAE30800CE2E3E /* ViewController.swift */,
 				040B4B9E26CAE30B00CE2E3E /* Assets.xcassets */,
+				04B75DC726D5854600D6B215 /* Localizable.stringsdict */,
 				040B4BA026CAE30B00CE2E3E /* LaunchScreen.storyboard */,
 				040B4BA326CAE30B00CE2E3E /* Info.plist */,
 				040B4B9B26CAE30800CE2E3E /* Piece.xcdatamodeld */,
@@ -202,10 +223,8 @@
 		040B4BF026CAE4D600CE2E3E /* Flow */ = {
 			isa = PBXGroup;
 			children = (
-				04D4285426CD8E5500346FB6 /* AddPurchachesViewController */,
-				0418B78926CC352400D637CC /* AddMemberViewController */,
-				040B4BF126CAE4D600CE2E3E /* AddBaseInfoViewController */,
-				040B4BF326CAE4D600CE2E3E /* AddPageController */,
+				04C9A0BD26D56639006B2FDE /* EventListViewController */,
+				04C9A0BC26D56627006B2FDE /* AddEventModule */,
 			);
 			path = Flow;
 			sourceTree = "<group>";
@@ -251,6 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				040B4C1326CAF81100CE2E3E /* AddEventHeaderView.swift */,
+				045D4FE526D53D7600BA1C20 /* AddPurchaseButtonView.swift */,
 				0418B79C26CC39DE00D637CC /* UnderlineView.swift */,
 			);
 			path = View;
@@ -278,6 +298,7 @@
 			isa = PBXGroup;
 			children = (
 				0418B78B26CC355900D637CC /* PButton.swift */,
+				044CBFC326D532F700B24B01 /* AddPurchaseButton.swift */,
 				04D4283F26CD863F00346FB6 /* PButtonFramed.swift */,
 			);
 			path = Button;
@@ -295,6 +316,8 @@
 			isa = PBXGroup;
 			children = (
 				044CBF6226CD91F900B24B01 /* MemberModel.swift */,
+				044CBFBB26D0DF6F00B24B01 /* PurchacheModel.swift */,
+				04C9A0B726D56411006B2FDE /* EventModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -315,9 +338,47 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		044CBFB226D0DF2D00B24B01 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				044CBFB326D0DF4500B24B01 /* AddPurchacheCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		04C9A0BC26D56627006B2FDE /* AddEventModule */ = {
+			isa = PBXGroup;
+			children = (
+				04D4285426CD8E5500346FB6 /* AddPurchachesViewController */,
+				0418B78926CC352400D637CC /* AddMemberViewController */,
+				040B4BF126CAE4D600CE2E3E /* AddBaseInfoViewController */,
+				040B4BF326CAE4D600CE2E3E /* AddPageController */,
+			);
+			path = AddEventModule;
+			sourceTree = "<group>";
+		};
+		04C9A0BD26D56639006B2FDE /* EventListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				04C9A0C826D56763006B2FDE /* Cell */,
+				04C9A0BE26D56655006B2FDE /* EventListViewController.swift */,
+				04C9A0C326D566F8006B2FDE /* EventListViewModel.swift */,
+			);
+			path = EventListViewController;
+			sourceTree = "<group>";
+		};
+		04C9A0C826D56763006B2FDE /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				04C9A0C926D5679B006B2FDE /* EventCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		04D4285426CD8E5500346FB6 /* AddPurchachesViewController */ = {
 			isa = PBXGroup;
 			children = (
+				044CBFB226D0DF2D00B24B01 /* Cell */,
 				04D4284F26CD8E5000346FB6 /* AddPurchachesViewController.swift */,
 				044CBFAD26CEEC2800B24B01 /* AddPurchachesViewModel.swift */,
 			);
@@ -328,10 +389,10 @@
 			isa = PBXGroup;
 			children = (
 				04FB642D26CC447A0005B70E /* Date+Extension.swift */,
+				04C9A0B226D55677006B2FDE /* UIViewController+Extension.swift */,
 				044CBF6726CD928600B24B01 /* UIImageView+Extension.swift */,
 				04FB643226CC4EF10005B70E /* UILabel+Extension.swift */,
 				044CBF6C26CD92C900B24B01 /* String+Extension.swift */,
-				044CBF8226CD995C00B24B01 /* Cells+Extension.swift */,
 				044CBF8726CD9F8F00B24B01 /* UISearchBar+Extension.swift */,
 			);
 			path = Extension;
@@ -452,6 +513,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 040B4B8626CAE30800CE2E3E;
 			productRefGroup = 040B4B9026CAE30800CE2E3E /* Products */;
@@ -472,6 +534,7 @@
 			files = (
 				040B4BA226CAE30B00CE2E3E /* LaunchScreen.storyboard in Resources */,
 				040B4B9F26CAE30B00CE2E3E /* Assets.xcassets in Resources */,
+				04B75DC526D5854600D6B215 /* Localizable.stringsdict in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -636,31 +699,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04C9A0B326D55677006B2FDE /* UIViewController+Extension.swift in Sources */,
+				044CBFC426D532F800B24B01 /* AddPurchaseButton.swift in Sources */,
 				04D4285026CD8E5000346FB6 /* AddPurchachesViewController.swift in Sources */,
 				044CBF6326CD91F900B24B01 /* MemberModel.swift in Sources */,
 				044CBFAE26CEEC2900B24B01 /* AddPurchachesViewModel.swift in Sources */,
 				040B4B9D26CAE30800CE2E3E /* Piece.xcdatamodeld in Sources */,
 				040B4B9726CAE30800CE2E3E /* ViewController.swift in Sources */,
+				04C9A0B826D56411006B2FDE /* EventModel.swift in Sources */,
 				040B4C1426CAF81100CE2E3E /* AddEventHeaderView.swift in Sources */,
 				044CBF7826CD952100B24B01 /* TableViewAdapter.swift in Sources */,
+				045D4FE626D53D7600BA1C20 /* AddPurchaseButtonView.swift in Sources */,
 				04D4284026CD863F00346FB6 /* PButtonFramed.swift in Sources */,
+				04C9A0C426D566F8006B2FDE /* EventListViewModel.swift in Sources */,
 				0418B78C26CC355900D637CC /* PButton.swift in Sources */,
 				0418B79526CC386600D637CC /* PTextFieldView.swift in Sources */,
 				044CBF8826CD9F8F00B24B01 /* UISearchBar+Extension.swift in Sources */,
 				04FB642E26CC447A0005B70E /* Date+Extension.swift in Sources */,
 				044CBF6826CD928600B24B01 /* UIImageView+Extension.swift in Sources */,
+				04C9A0BF26D56655006B2FDE /* EventListViewController.swift in Sources */,
 				040B4BF626CAE4D600CE2E3E /* AddBaseInfoViewController.swift in Sources */,
 				040B4BF826CAE4D600CE2E3E /* AddEventPageController.swift in Sources */,
 				044CBF6D26CD92C900B24B01 /* String+Extension.swift in Sources */,
 				04FB643326CC4EF10005B70E /* UILabel+Extension.swift in Sources */,
 				040B4BE426CAE3FD00CE2E3E /* R.generated.swift in Sources */,
 				040B4BF726CAE4D600CE2E3E /* AddEventPageControllerViewModel.swift in Sources */,
+				044CBFBC26D0DF6F00B24B01 /* PurchacheModel.swift in Sources */,
 				040B4B9326CAE30800CE2E3E /* AppDelegate.swift in Sources */,
 				04D4283B26CD84AC00346FB6 /* AddMemberViewController.swift in Sources */,
-				044CBF8326CD995C00B24B01 /* Cells+Extension.swift in Sources */,
+				04C9A0CA26D5679B006B2FDE /* EventCell.swift in Sources */,
 				044CBF7226CD944A00B24B01 /* AddMemberViewModel.swift in Sources */,
 				040B4B9526CAE30800CE2E3E /* SceneDelegate.swift in Sources */,
 				040B4C0C26CAF7BC00CE2E3E /* PTitleLabel.swift in Sources */,
+				044CBFB426D0DF4500B24B01 /* AddPurchacheCell.swift in Sources */,
 				0418B79D26CC39DE00D637CC /* UnderlineView.swift in Sources */,
 				044CBF7E26CD961D00B24B01 /* MemberFullCell.swift in Sources */,
 				04FB642826CC437B0005B70E /* AddBaseInfoViewModel.swift in Sources */,
@@ -703,8 +774,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				040B4BA126CAE30B00CE2E3E /* Base */,
+				04B75DC826D585CF00D6B215 /* ru */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		04B75DC726D5854600D6B215 /* Localizable.stringsdict */ = {
+			isa = PBXVariantGroup;
+			children = (
+				04B75DC626D5854600D6B215 /* en */,
+				04B75DC926D585D000D6B215 /* ru */,
+			);
+			name = Localizable.stringsdict;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -714,6 +795,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -775,6 +857,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

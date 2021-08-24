@@ -25,7 +25,7 @@ final class AddMemberViewController: UIViewController, ChildPageViewControllerIn
         let stackView = UIStackView()
         stackView.addArrangedSubview(previousButton)
         stackView.addArrangedSubview(nextButton)
-        stackView.distribution = .fillProportionally
+        stackView.distribution = .fillEqually
         stackView.spacing = 16
         return stackView
     }()
@@ -34,6 +34,7 @@ final class AddMemberViewController: UIViewController, ChildPageViewControllerIn
         let bar = UISearchBar()
         bar.delegate = self
         bar.backgroundImage = UIImage()
+        bar.placeholder = "Поиск"
         bar.setTextColor(R.color.text_base())
         return bar
     }()
@@ -43,7 +44,6 @@ final class AddMemberViewController: UIViewController, ChildPageViewControllerIn
         tableView.delegate = viewModel
         tableView.dataSource = viewModel
         tableView.separatorStyle = .none
-        tableView.register(MemberFullCell.self)
         return tableView
     }()
     
@@ -60,6 +60,7 @@ final class AddMemberViewController: UIViewController, ChildPageViewControllerIn
     }
     
     private func configureView() {
+        view.addGestureRecognizer(UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing(_:))))
         configuteSearchView()
         configureStackview()
         configureTableView()

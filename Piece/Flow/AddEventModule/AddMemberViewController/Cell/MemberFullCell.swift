@@ -5,8 +5,8 @@ import UIKit
 
 final class MemberFullCell: UITableViewCell {
     
-    private let nameLabel = PTitleLabel(textColot: R.color.text_base(), fontSize: 18, text: "")
-    private let phoneLabel = PTitleLabel(textColot: R.color.gray_base(), fontSize: 14, text: "")
+    private let nameLabel = PTitleLabel(textColot: R.color.text_base(), fontSize: 18)
+    private let phoneLabel = PTitleLabel(textColot: R.color.gray_base(), fontSize: 14)
     private let separatorView = UnderlineView()
     private let selectedIcon = UIImageView(image: R.image.selected_icon())
     
@@ -44,7 +44,6 @@ final class MemberFullCell: UITableViewCell {
     }
     
     private func configureCell() {
-        selectionStyle = .none
         configureStackView()
         configureAvatarImageView()
         configureSelectedIcon()
@@ -103,4 +102,7 @@ final class MemberFullCell: UITableViewCell {
         isCellSelected
     }
     
+    public func hideSeparator() {
+        separatorView.isHidden = true
+    }
 }

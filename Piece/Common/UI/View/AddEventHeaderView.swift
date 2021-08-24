@@ -8,7 +8,7 @@ final class AddEventHeaderView: UIView {
     
     private let totalCostLabel: UILabel = {
         let label = UILabel()
-        label.text = "₴ 265.43"
+        label.text = "₴ 0"
         label.textColor = R.color.text_base()
         label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
         return label
@@ -136,6 +136,10 @@ final class AddEventHeaderView: UIView {
         } else {
             setState(.addMember)
         }
+    }
+    
+    public func setTotalPrice(_ price: Float) {
+        totalCostLabel.text = "₴ \(price)"
     }
     
     enum AddEventHeaderViewState {

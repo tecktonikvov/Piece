@@ -4,7 +4,7 @@
 import UIKit
 
 final class PTitleLabel: UILabel {
-    init(textColot: UIColor? = R.color.gray_base(), fontSize: CGFloat = 14, text: String) {
+    init(textColot: UIColor? = R.color.gray_base(), fontSize: CGFloat = 14, text: String = "") {
         super.init(frame: .zero)
         self.setAttributedText(withLineSpacing: 7, text: text)
         self.textColor = textColot

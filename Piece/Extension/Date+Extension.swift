@@ -4,12 +4,9 @@
 import Foundation
 
 extension Date {
-    static let formatter: DateFormatter = {
+    public func getFormat(_ format: String) -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd MMM yyyy HH:mm"
-        return formatter
-    }()
-    var formatted: String {
-        return Date.formatter.string(from: self)
+        formatter.dateFormat = format
+        return formatter.string(from: self)
     }
 }

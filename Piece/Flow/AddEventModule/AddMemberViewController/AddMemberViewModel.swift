@@ -29,11 +29,16 @@ extension AddMemberViewModel  {
         let currentModel = model[indexPath.row]
         let cell = MemberFullCell()
         cell.setupCell(name: currentModel.name, phone: currentModel.phone, imageUrl: currentModel.avatarUrl)
+        
+        if indexPath.row == model.count - 1 {
+            cell.hideSeparator()
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? MemberFullCell else { return }
+        tableView.deselectRow(at: indexPath, animated: true)
         cell.select()
         if cell.getIsCellSelected() {
             selectedIndexes.append(indexPath.row)

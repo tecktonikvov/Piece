@@ -358,10 +358,12 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 6 images.
+  /// This `R.image` struct is generated, and contains static references to 8 images.
   struct image {
     /// Image `add_base_info_icon`.
     static let add_base_info_icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "add_base_info_icon")
+    /// Image `add_icon`.
+    static let add_icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "add_icon")
     /// Image `add_member_icon`.
     static let add_member_icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "add_member_icon")
     /// Image `add_purchases_icon`.
@@ -372,11 +374,20 @@ struct R: Rswift.Validatable {
     static let calendar_icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "calendar_icon")
     /// Image `selected_icon`.
     static let selected_icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "selected_icon")
+    /// Image `selected_purchahe_icon`.
+    static let selected_purchahe_icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "selected_purchahe_icon")
 
     #if os(iOS) || os(tvOS)
     /// `UIImage(named: "add_base_info_icon", bundle: ..., traitCollection: ...)`
     static func add_base_info_icon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.add_base_info_icon, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "add_icon", bundle: ..., traitCollection: ...)`
+    static func add_icon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.add_icon, compatibleWith: traitCollection)
     }
     #endif
 
@@ -415,6 +426,13 @@ struct R: Rswift.Validatable {
     }
     #endif
 
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "selected_purchahe_icon", bundle: ..., traitCollection: ...)`
+    static func selected_purchahe_icon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.selected_purchahe_icon, compatibleWith: traitCollection)
+    }
+    #endif
+
     fileprivate init() {}
   }
 
@@ -440,6 +458,43 @@ struct R: Rswift.Validatable {
         }
 
         fileprivate init() {}
+      }
+
+      fileprivate init() {}
+    }
+
+    fileprivate init() {}
+  }
+
+  /// This `R.string` struct is generated, and contains static references to 2 localization tables.
+  struct string {
+    /// This `R.string.launchScreen` struct is generated, and contains static references to 0 localization keys.
+    struct launchScreen {
+      fileprivate init() {}
+    }
+
+    /// This `R.string.localizable` struct is generated, and contains static references to 1 localization keys.
+    struct localizable {
+      /// en translation: %#@VARIABLE@
+      ///
+      /// Locales: en, ru
+      static let membersCount = Rswift.StringResource(key: "members count", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru"], comment: nil)
+
+      /// en translation: %#@VARIABLE@
+      ///
+      /// Locales: en, ru
+      static func membersCount(_ value1: UInt, preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          let format = NSLocalizedString("members count", bundle: hostingBundle, comment: "")
+          return String(format: format, locale: applicationLocale, value1)
+        }
+
+        guard let (locale, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "members count"
+        }
+
+        let format = NSLocalizedString("members count", bundle: bundle, comment: "")
+        return String(format: format, locale: locale, value1)
       }
 
       fileprivate init() {}

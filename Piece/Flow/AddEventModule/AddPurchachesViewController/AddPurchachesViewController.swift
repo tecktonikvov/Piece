@@ -4,7 +4,7 @@
 import UIKit
 import SnapKit
 
-final class AddPurchachesViewController: UIViewController, ChildPageViewControllerInterface {
+final class AddPurchaseViewController: UIViewController, ChildPageViewControllerInterface {
     
     weak var delegate: AddEventStepsControllDelegate?
         
@@ -25,7 +25,7 @@ final class AddPurchachesViewController: UIViewController, ChildPageViewControll
         let stackView = UIStackView()
         stackView.addArrangedSubview(previousButton)
         stackView.addArrangedSubview(nextButton)
-        stackView.distribution = .fillProportionally
+        stackView.distribution = .fillEqually
         stackView.spacing = 16
         return stackView
     }()
@@ -36,7 +36,7 @@ final class AddPurchachesViewController: UIViewController, ChildPageViewControll
         view.layer.cornerRadius = 4
         return view
     }()
-    
+        
     private let itemLabel = PTitleLabel(textColot: R.color.gray_darkest(), fontSize: 16, text: "Название")
     private let priceLabel = PTitleLabel(textColot: R.color.gray_darkest(), fontSize: 16, text: "Цена")
 
@@ -45,20 +45,33 @@ final class AddPurchachesViewController: UIViewController, ChildPageViewControll
         tableView.delegate = viewModel
         tableView.dataSource = viewModel
         tableView.separatorStyle = .none
-        tableView.register(MemberFullCell.self)
         return tableView
     }()
     
-    private let viewModel: AddPurchachesViewModelIntarface
+    private var viewModel: AddPurchaseViewModelIntarface
     
-    init(viewModel: AddPurchachesViewModelIntarface) {
+    init(viewModel: AddPurchaseViewModelIntarface) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         configureView()
+        configureCallbacks()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func configureCallbacks() {
+        viewModel.addPurchaseBlock = { [weak self] in
+            self?.showAlert()
+        }
+        
+        viewModel.updateBlock = { [weak self] in
+            guard let self = self else { return }
+            UIView.transition(with: self.tableView, duration: 0.2,
+                              options: .transitionCrossDissolve,
+                              animations: {self.tableView.reloadData()}, completion: nil)
+        }
     }
     
     private func configureView() {
@@ -74,7 +87,7 @@ final class AddPurchachesViewController: UIViewController, ChildPageViewControll
         titlesContainerView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(24)
             $0.height.equalTo(32)
-            $0.leading.trailing.equalToSuperview().inset(16)
+            $0.leading.trailing.equalToSuperview().inset(24)
         }
     }
     
@@ -82,7 +95,7 @@ final class AddPurchachesViewController: UIViewController, ChildPageViewControll
         titlesContainerView.addSubview(itemLabel)
         itemLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(16)
-            $0.top.equalToSuperview().inset(8)
+            $0.centerY.equalToSuperview()
         }
     }
     
@@ -90,7 +103,7 @@ final class AddPurchachesViewController: UIViewController, ChildPageViewControll
         titlesContainerView.addSubview(priceLabel)
         priceLabel.snp.makeConstraints {
             $0.trailing.equalToSuperview().inset(16)
-            $0.top.equalToSuperview().inset(8)
+            $0.centerY.equalToSuperview()
         }
     }
     
@@ -106,10 +119,58 @@ final class AddPurchachesViewController: UIViewController, ChildPageViewControll
     private func configureTableView() {
         view.addSubview(tableView)
         tableView.snp.makeConstraints {
-            $0.top.equalTo(titlesContainerView.snp.bottom).inset(-8)
+            $0.top.equalTo(titlesContainerView.snp.bottom)
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalTo(stackView.snp.top)
         }
+    }
+    
+    private func showAlert() {
+        let alert = UIAlertController(title: "Новая покупка", message: "Заполните информацию", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
+        let doneAction = UIAlertAction(title: "Готово", style: .default) { [weak self] (action) -> Void in
+            guard let title = alert.textFields?[0].text, let price = alert.textFields?[1].text else { return }
+            self?.doneButtonDidPressed(title: title, price: price)
+        }
+        doneAction.isEnabled = false
+
+        alert.addTextField { titleTextField in
+            titleTextField.placeholder = "Название"
+        }
+        
+        alert.addTextField { priceTextField in
+            priceTextField.placeholder = "Цена"
+            priceTextField.keyboardType = .decimalPad
+        }
+
+        alert.addAction(doneAction)
+        alert.addAction(cancelAction)
+        
+        setObservers(alert: alert, doneAction: doneAction)
+       
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    private func setObservers(alert: UIAlertController, doneAction: UIAlertAction) {
+        setObserver(alert: alert, doneAction: doneAction, textFieldNumber: 0)
+        setObserver(alert: alert, doneAction: doneAction, textFieldNumber: 1)
+    }
+    
+    private func setObserver(alert: UIAlertController, doneAction: UIAlertAction, textFieldNumber: Int) {
+        NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification,
+                                               object: alert.textFields?[textFieldNumber],
+                                               queue: OperationQueue.main) { [weak self] _ in
+            guard let self = self else { return }
+            let title = alert.textFields?[0].text
+            let price = alert.textFields?[1].text
+            let isUserInputValid = self.viewModel.validateUserInput(title: title, price: price)
+            
+            doneAction.isEnabled = isUserInputValid
+        }
+    }
+    
+    private func doneButtonDidPressed(title: String, price: String) {
+        viewModel.createNewPurchase(title: title, price: price)
     }
     
     @objc private func nexButtonDidPressed() {

@@ -1,7 +1,5 @@
 import SnapKit
 
-//typealias AddEventPageControllerAdapter = UIPageViewControllerDelegate & UIPageViewControllerDataSource
-
 protocol ChildPageViewControllerInterface: UIViewController {
     var delegate: AddEventStepsControllDelegate? { get set }
 }
@@ -25,22 +23,24 @@ protocol AddEventStepsControllDelegate: UIViewController {
     
     private lazy var pageController: UIPageViewController = {
         let pageController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
-        //pageController.delegate = self
         if let controller = childControllers.first {
             pageController.setViewControllers([controller], direction: .forward, animated: true, completion: nil)
         }
         return pageController
     }()
 
-    private var currentIndex: Int = 0
     private lazy var childControllers = viewModel.getControllers()
-    private let viewModel: AddEventPageControllerViewModelInterface
+    private var currentIndex: Int = 0
+    private var viewModel: AddEventPageControllerViewModelInterface
 
 
     init(viewModel: AddEventPageControllerViewModelInterface) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         configureView()
+        self.viewModel.updatePriceBlock = { [weak self] totalPrice in
+            self?.headerInfoView.setTotalPrice(totalPrice)
+        }
     }
 
     required init?(coder: NSCoder) {
@@ -96,33 +96,6 @@ protocol AddEventStepsControllDelegate: UIViewController {
     }
 
  }
-
-//extension AddEventPageController: AddEventPageControllerAdapter {
-//    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-//        let controllers = childControllers as [UIViewController]
-//        guard let viewControllerIndex = controllers.firstIndex(of: viewController) else { return nil }
-//        let nextIndex = viewControllerIndex + 1
-//        guard childControllers.count != nextIndex else { return nil }
-//        guard childControllers.count > nextIndex else { return nil }
-//        return controllers[nextIndex]
-//    }
-//
-//    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-//        let controllers = childControllers as [UIViewController]
-//        guard let viewControllerIndex = controllers.firstIndex(of: viewController) else { return nil }
-//        let previousIndex = viewControllerIndex - 1
-//        guard previousIndex >= 0 else { return nil }
-//        guard childControllers.count > previousIndex else { return nil }
-//        return controllers[previousIndex]
-//    }
-
-//    func pageViewController(_: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
-//        guard let destinationViewController = pendingViewControllers.first else { return }
-//        let controllers = childControllers as [UIViewController]
-//        guard let viewControllerIndex = controllers.firstIndex(of: destinationViewController) else { return }
-//        currentIndex = viewControllerIndex
-//    }
-//}
 
 extension AddEventPageController: AddEventStepsControllDelegate {
     public func nextButtonDidPressed() {

@@ -13,8 +13,9 @@ final class PTextFieldView: UIView {
         return textField
     }()
     
-    init() {
+    init(placeholder: String = "") {
         super.init(frame: .zero)
+        textField.placeholder = placeholder
         configureView()
     }
     
@@ -48,5 +49,9 @@ final class PTextFieldView: UIView {
     
     public func setText(_ text: String) {
         textField.text = text
+    }
+    
+    public func setDelegate(_ delegate: UITextFieldDelegate) {
+        textField.delegate = delegate
     }
 }

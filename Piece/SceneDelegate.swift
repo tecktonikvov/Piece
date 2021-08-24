@@ -17,19 +17,31 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         window?.rootViewController = navigationController
-        let childControllers = getViewControllers()
-        let viewModel = AddEventPageControllerViewModel(childControllers: childControllers)
-        let mainController = AddEventPageController(viewModel: viewModel)
+       
+        //let mainController = getViewController()
+        let viewModel = EventListViewModel()
+        let mainController = EventListViewController(viewModel: viewModel)
+
         navigationController.addChild(mainController)
         window?.makeKeyAndVisible()
     }
     
-    private func getViewControllers() -> [ChildPageViewControllerInterface] {
+    private func getViewController() -> UIViewController {
         let memberViewModel = AddMemberViewModel()
-        let purchachesViewModel = AddPurchachesViewModel()
-        return [AddBaseInfoViewController(),
-                AddMemberViewController(viewModel: memberViewModel),
-                AddPurchachesViewController(viewModel: purchachesViewModel)]
+        let purchaseViewModel = AddPurchaseViewModel()
+        
+        let baseInfoController = AddBaseInfoViewController()
+        let memberController = AddMemberViewController(viewModel: memberViewModel)
+        let purchaseController = AddPurchaseViewController(viewModel: purchaseViewModel)
+        
+        let childControllers: [ChildPageViewControllerInterface] = [baseInfoController,
+                                                                    memberController,
+                                                                    purchaseController]
+        
+        let pageViewModel = AddEventPageControllerViewModel(childControllers: childControllers,
+                                                            purchaseViewModel: purchaseViewModel)
+        
+        return AddEventPageController(viewModel: pageViewModel)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
