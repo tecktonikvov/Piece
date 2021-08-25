@@ -21,5 +21,16 @@ struct EventModel {
                                                       Member(name: "Cergo", avatarUrl: nil, phone: "+39492734677")],
                                             totalPrice: 2354.44,
                                             date: Date())
-    public static let mock = [mockItem, mockItem, mockItem, mockItem, mockItem, mockItem, mockItem]
+    public static let mock = [EventModel(id: 0,
+                                         title: "Рыбалка Широкое",
+                                         members: [Member(name: "Alex", avatarUrl: nil, phone: "+39492734677")],
+                                         totalPrice: 2354.44,
+                                         date: Date()),
+                              EventModel(id: 0,
+                                         title: "Рыбалка Широкое",
+                                         members: [Member(name: "Alex", avatarUrl: nil, phone: "+39492734677"),
+                                                   Member(name: "Valya", avatarUrl: nil, phone: "+39492734677")],
+                                         totalPrice: 2354.44,
+                                         date: Date()),
+                              mockItem, mockItem, mockItem, mockItem, mockItem, mockItem]
 }

@@ -36,6 +36,8 @@
 		044CBFBC26D0DF6F00B24B01 /* PurchacheModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044CBFBB26D0DF6F00B24B01 /* PurchacheModel.swift */; };
 		044CBFC426D532F800B24B01 /* AddPurchaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044CBFC326D532F700B24B01 /* AddPurchaseButton.swift */; };
 		045D4FE626D53D7600BA1C20 /* AddPurchaseButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D4FE526D53D7600BA1C20 /* AddPurchaseButtonView.swift */; };
+		04761EB826D6D80100916647 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04761EB726D6D80100916647 /* UIView+Extension.swift */; };
+		0494A14426D6D54E002782E8 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0494A14326D6D54D002782E8 /* BaseViewController.swift */; };
 		04B75DC526D5854600D6B215 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 04B75DC726D5854600D6B215 /* Localizable.stringsdict */; };
 		04C9A0B326D55677006B2FDE /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C9A0B226D55677006B2FDE /* UIViewController+Extension.swift */; };
 		04C9A0B826D56411006B2FDE /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C9A0B726D56411006B2FDE /* EventModel.swift */; };
@@ -106,6 +108,8 @@
 		044CBFBB26D0DF6F00B24B01 /* PurchacheModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchacheModel.swift; sourceTree = "<group>"; };
 		044CBFC326D532F700B24B01 /* AddPurchaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPurchaseButton.swift; sourceTree = "<group>"; };
 		045D4FE526D53D7600BA1C20 /* AddPurchaseButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPurchaseButtonView.swift; sourceTree = "<group>"; };
+		04761EB726D6D80100916647 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		0494A14326D6D54D002782E8 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		04B75DC626D5854600D6B215 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		04B75DC826D585CF00D6B215 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		04B75DC926D585D000D6B215 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ru; path = ru.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
@@ -258,6 +262,7 @@
 		040B4C0326CAF77700CE2E3E /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				0494A14826D6D565002782E8 /* Controllers */,
 				0418B79326CC385800D637CC /* TextField */,
 				0418B78A26CC354600D637CC /* Button */,
 				040B4C0A26CAF7AF00CE2E3E /* Label */,
@@ -346,6 +351,14 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		0494A14826D6D565002782E8 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0494A14326D6D54D002782E8 /* BaseViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		04C9A0BC26D56627006B2FDE /* AddEventModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -394,6 +407,7 @@
 				04FB643226CC4EF10005B70E /* UILabel+Extension.swift */,
 				044CBF6C26CD92C900B24B01 /* String+Extension.swift */,
 				044CBF8726CD9F8F00B24B01 /* UISearchBar+Extension.swift */,
+				04761EB726D6D80100916647 /* UIView+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -710,6 +724,8 @@
 				040B4C1426CAF81100CE2E3E /* AddEventHeaderView.swift in Sources */,
 				044CBF7826CD952100B24B01 /* TableViewAdapter.swift in Sources */,
 				045D4FE626D53D7600BA1C20 /* AddPurchaseButtonView.swift in Sources */,
+				0494A14426D6D54E002782E8 /* BaseViewController.swift in Sources */,
+				04761EB826D6D80100916647 /* UIView+Extension.swift in Sources */,
 				04D4284026CD863F00346FB6 /* PButtonFramed.swift in Sources */,
 				04C9A0C426D566F8006B2FDE /* EventListViewModel.swift in Sources */,
 				0418B78C26CC355900D637CC /* PButton.swift in Sources */,

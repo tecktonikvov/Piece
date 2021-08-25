@@ -12,11 +12,12 @@ extension UILabel {
         self.attributedText = attrString
     }
     
-    public func setAttributedText(boldString: String, normalString: String, boldFont: UIFont) {
-        let attrs = [NSAttributedString.Key.font: boldFont]
-        let attributedString = NSMutableAttributedString(string: boldString, attributes: attrs)
-        let normalString = NSMutableAttributedString(string: normalString)
-        attributedString.append(normalString)
-        self.attributedText = attributedString
+    func shadow() {
+        self.layer.shadowColor = R.color.text_base()?.cgColor
+        self.layer.shadowRadius = 4.0
+        self.layer.shadowOpacity = 0.3
+        self.layer.masksToBounds = false
+        self.layer.shouldRasterize = true
+        self.layer.shadowOffset = CGSize(width: 0, height: 2)
     }
 }

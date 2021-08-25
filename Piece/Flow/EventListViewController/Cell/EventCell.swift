@@ -30,7 +30,14 @@ final class EventCell: UITableViewCell {
     private let memberLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
-        label.textColor = R.color.gray_darkest()
+        label.textColor = R.color.text_base()
+        return label
+    }()
+    
+    private let memberCountLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        label.textColor = R.color.text_base()
         return label
     }()
     
@@ -64,6 +71,7 @@ final class EventCell: UITableViewCell {
         configureTitleLabel()
         configureDateLabel()
         configureSeparatorView()
+        configureMemberCountLabel()
         configureMemberLabel()
         configurePriceLabel()
     }
@@ -100,12 +108,21 @@ final class EventCell: UITableViewCell {
         }
     }
     
+    private func configureMemberCountLabel() {
+        containerView.addSubview(memberCountLabel)
+        memberCountLabel.snp.makeConstraints {
+            $0.top.equalTo(separatorView.snp.bottom).inset(-8)
+            $0.leading.equalToSuperview().inset(16)
+        }
+    }
+    
     private func configureMemberLabel() {
+        let width = UIScreen.main.bounds.width * 0.6
         containerView.addSubview(memberLabel)
         memberLabel.snp.makeConstraints {
             $0.top.equalTo(separatorView.snp.bottom).inset(-8)
-            $0.leading.equalToSuperview().inset(16)
-            $0.trailing.equalToSuperview().inset(120)
+            $0.width.equalTo(width)
+            $0.leading.equalTo(memberCountLabel.snp.trailing).inset(-6)
             $0.bottom.equalToSuperview().inset(16)
         }
     }
@@ -121,12 +138,12 @@ final class EventCell: UITableViewCell {
     public func setupCell(title: String, date: Date, membersCount: Int, members: String, price: Float) {
         titleLabel.text = title
         dateLabel.text = date.getFormat("dd MMM yyyy")
-        let memberLocalized = membersCountUniversal(count: UInt(membersCount))
-        memberLabel.setAttributedText(boldString: "\(membersCount) ", normalString: "\(memberLocalized): \(members)", boldFont: UIFont.systemFont(ofSize: 16))
+        memberCountLabel.text = "\(membersCount)"
+        memberLabel.text = membersCountUniversal(count: UInt(membersCount)) + ": " + members
         priceLabel.text = "\(price) ₴"
     }
     
-    private func membersCountUniversal(count: UInt) -> String{
+    private func membersCountUniversal(count: UInt) -> String {
             let formatString: String = NSLocalizedString("members count", comment: "")
             let resultString: String = String.localizedStringWithFormat(formatString, count)
             return resultString

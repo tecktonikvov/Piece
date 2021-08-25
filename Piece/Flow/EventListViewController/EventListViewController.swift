@@ -3,7 +3,7 @@
 
 import UIKit
 
-final class EventListViewController: UIViewController {
+final class EventListViewController: BaseViewController {
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
@@ -24,15 +24,22 @@ final class EventListViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+       
     private func configureView() {
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
+        navigationController?.navigationItem.rightBarButtonItem = addButton
         configureTableView()
     }
     
     private func configureTableView() {
         view.addSubview(tableView)
         tableView.snp.makeConstraints {
-            $0.edges.equalTo(view.safeAreaLayoutGuide)
+            $0.top.equalTo(headerView.snp.bottom).inset(8)
+            $0.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
         }
+    }
+    
+    @objc private func addTapped() {
+        print("add")
     }
 }
