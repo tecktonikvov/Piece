@@ -1,18 +1,9 @@
-//  Created by Mac on 24.08.2021.
+//  Created by Mac on 30.08.2021.
 //
 
 import UIKit
 
-final class EventListViewController: BaseViewController {
-    
-    private lazy var settingsNavButton: UIBarButtonItem = {
-        let button = UIBarButtonItem()
-        button.image = R.image.settings_nav_icon()
-        button.tintColor = R.color.white()
-        button.action = #selector(settingsButtonDidPressed)
-        button.target = self
-        return button
-    }()
+final class PurchasesListViewController: BaseViewController {
     
     private lazy var addNavButton: UIBarButtonItem = {
         let button = UIBarButtonItem()
@@ -31,9 +22,9 @@ final class EventListViewController: BaseViewController {
         return tableView
     }()
     
-    private let viewModel: EventListViewModelIntarface
+    private let viewModel: PurchasesListViewModelInterface
     
-    init(viewModel: EventListViewModelIntarface) {
+    init(viewModel: PurchasesListViewModelInterface) {
         self.viewModel = viewModel
         super.init(viewModel: viewModel)
         configureView()
@@ -46,7 +37,6 @@ final class EventListViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationItem.leftBarButtonItem = settingsNavButton
         navigationItem.rightBarButtonItem = addNavButton
     }
     

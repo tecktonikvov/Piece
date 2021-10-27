@@ -5,8 +5,8 @@ import UIKit
 
 final class AddPurchaseCell: UITableViewCell {
     
-    private let titleLabel = PTitleLabel(textColot: R.color.gray_base(), fontSize: 14)
-    private let priceLabel = PTitleLabel(textColot: R.color.gray_base(), fontSize: 14)
+    private let titleLabel = PTitleLabel(textColor: R.color.gray_base(), fontSize: 14)
+    private let priceLabel = PTitleLabel(textColor: R.color.gray_base(), fontSize: 14)
     private let separatorView = UnderlineView()
     private let selectedIcon = UIImageView(image: R.image.selected_purchahe_icon())
     

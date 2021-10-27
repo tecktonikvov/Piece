@@ -47,9 +47,9 @@ final class AddMemberViewController: UIViewController, ChildPageViewControllerIn
         return tableView
     }()
     
-    private let viewModel: AddMemberViewModelIntarface
+    private let viewModel: AddMemberViewModelInterface
     
-    init(viewModel: AddMemberViewModelIntarface) {
+    init(viewModel: AddMemberViewModelInterface) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         configureView()

@@ -358,7 +358,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 8 images.
+  /// This `R.image` struct is generated, and contains static references to 13 images.
   struct image {
     /// Image `add_base_info_icon`.
     static let add_base_info_icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "add_base_info_icon")
@@ -366,16 +366,26 @@ struct R: Rswift.Validatable {
     static let add_icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "add_icon")
     /// Image `add_member_icon`.
     static let add_member_icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "add_member_icon")
+    /// Image `add_nav_icon`.
+    static let add_nav_icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "add_nav_icon")
     /// Image `add_purchases_icon`.
     static let add_purchases_icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "add_purchases_icon")
     /// Image `avatar_placeholder_image`.
     static let avatar_placeholder_image = Rswift.ImageResource(bundle: R.hostingBundle, name: "avatar_placeholder_image")
+    /// Image `back_nav_icon`.
+    static let back_nav_icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "back_nav_icon")
     /// Image `calendar_icon`.
     static let calendar_icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "calendar_icon")
+    /// Image `edit_nav_icon`.
+    static let edit_nav_icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "edit_nav_icon")
     /// Image `selected_icon`.
     static let selected_icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "selected_icon")
     /// Image `selected_purchahe_icon`.
     static let selected_purchahe_icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "selected_purchahe_icon")
+    /// Image `settings_nav_icon`.
+    static let settings_nav_icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "settings_nav_icon")
+    /// Image `wrap_arrow_icon`.
+    static let wrap_arrow_icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "wrap_arrow_icon")
 
     #if os(iOS) || os(tvOS)
     /// `UIImage(named: "add_base_info_icon", bundle: ..., traitCollection: ...)`
@@ -399,6 +409,13 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "add_nav_icon", bundle: ..., traitCollection: ...)`
+    static func add_nav_icon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.add_nav_icon, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "add_purchases_icon", bundle: ..., traitCollection: ...)`
     static func add_purchases_icon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.add_purchases_icon, compatibleWith: traitCollection)
@@ -413,9 +430,23 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "back_nav_icon", bundle: ..., traitCollection: ...)`
+    static func back_nav_icon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.back_nav_icon, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "calendar_icon", bundle: ..., traitCollection: ...)`
     static func calendar_icon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.calendar_icon, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "edit_nav_icon", bundle: ..., traitCollection: ...)`
+    static func edit_nav_icon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.edit_nav_icon, compatibleWith: traitCollection)
     }
     #endif
 
@@ -430,6 +461,20 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "selected_purchahe_icon", bundle: ..., traitCollection: ...)`
     static func selected_purchahe_icon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.selected_purchahe_icon, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "settings_nav_icon", bundle: ..., traitCollection: ...)`
+    static func settings_nav_icon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.settings_nav_icon, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "wrap_arrow_icon", bundle: ..., traitCollection: ...)`
+    static func wrap_arrow_icon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.wrap_arrow_icon, compatibleWith: traitCollection)
     }
     #endif
 

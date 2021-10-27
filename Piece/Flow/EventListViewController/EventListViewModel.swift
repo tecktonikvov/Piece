@@ -3,14 +3,19 @@
 
 import UIKit
 
-protocol EventListViewModelIntarface: TableViewAdapter {
-    
+typealias EventListViewModelAdapter = BaseViewModelInterface & TableViewAdapter
+
+protocol EventListViewModelIntarface: EventListViewModelAdapter {
+    var pushDetailBlock: ((EventModel) -> Void)? { get set }
 }
 
 final class EventListViewModel: NSObject, EventListViewModelIntarface {
+    public var pushDetailBlock: ((EventModel) -> Void)?
+    
     private let model = EventModel.mock
 }
 
+// MARK: - TableViewAdapter
 extension EventListViewModel  {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         model.count
@@ -22,17 +27,30 @@ extension EventListViewModel  {
         let membersArrayString = currentModel.members.map { $0.name }
         let membersString = membersArrayString.joined(separator: ", ")
         
-        cell.setupCell(title: currentModel.title,
-                       date: currentModel.date,
-                       membersCount: currentModel.members.count,
-                       members: membersString,
-                       price: currentModel.totalPrice)
+//        cell.setupCell(title: currentModel.title,
+//                       date: currentModel.date,
+//                       membersCount: currentModel.members.count,
+//                       members: membersString,
+//                       price: currentModel.totalPrice)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       // guard let cell = tableView.cellForRow(at: indexPath) as? EventCell else { return }
         tableView.deselectRow(at: indexPath, animated: true)
+        let selectedEvent = model[indexPath.row]
+        pushDetailBlock?(selectedEvent)
+    }
+    
+}
+
+// MARK: - BaseViewModelInterface
+extension EventListViewModel {
+    func getHeaderSubtitle() -> String {
+        "В этом месяце"
+    }
+    
+    func getHeaderAmount() -> Float {
+        12212
     }
     
 }

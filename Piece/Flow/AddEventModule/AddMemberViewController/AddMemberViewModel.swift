@@ -4,13 +4,13 @@
 import UIKit
 
 
-protocol AddMemberViewModelIntarface: TableViewAdapter {
+protocol AddMemberViewModelInterface: TableViewAdapter {
     func search(_ text: String)
 }
 
-final class AddMemberViewModel: NSObject, AddMemberViewModelIntarface {
-    private var model = Member.mock
-    private var initialModel = Member.mock
+final class AddMemberViewModel: NSObject, AddMemberViewModelInterface {
+    private var model = Member.mockArr
+    private var initialModel = Member.mockArr
     
     private var selectedIndexes = [Int]()
     

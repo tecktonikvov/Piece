@@ -11,12 +11,15 @@ import CoreData
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
-    private let navigationController = UINavigationController()
+   // private let navigationController = UINavigationController()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = navigationController
-        window?.makeKeyAndVisible()
+       // window?.rootViewController = navigationController
+//        let storyboard = UIStoryboard(name: "EventListViewController", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "EventListViewController")
+//        window?.rootViewController = vc
+        //window?.makeKeyAndVisible()
         return true
     }
 

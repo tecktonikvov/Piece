@@ -5,8 +5,8 @@ import UIKit
 
 final class MemberFullCell: UITableViewCell {
     
-    private let nameLabel = PTitleLabel(textColot: R.color.text_base(), fontSize: 18)
-    private let phoneLabel = PTitleLabel(textColot: R.color.gray_base(), fontSize: 14)
+    private let nameLabel = PTitleLabel(textColor: R.color.text_base(), fontSize: 18)
+    private let phoneLabel = PTitleLabel(textColor: R.color.gray_base(), fontSize: 14)
     private let separatorView = UnderlineView()
     private let selectedIcon = UIImageView(image: R.image.selected_icon())
     
@@ -21,12 +21,7 @@ final class MemberFullCell: UITableViewCell {
         return stackView
     }()
     
-    private let avatarImageView: UIImageView = {
-        let imageView = UIImageView(image: R.image.avatar_placeholder_image())
-        imageView.layer.cornerRadius = imageView.frame.height/2
-        imageView.clipsToBounds = true
-        return imageView
-    }()
+    private let avatarImageView = AvatarImageView()
     
     private var isCellSelected = false {
         didSet {

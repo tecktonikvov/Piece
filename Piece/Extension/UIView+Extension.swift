@@ -23,4 +23,22 @@ extension UIView {
 
         self.layer.insertSublayer(gradient, at: 0)
     }
+    
+    func setShadow() {
+        self.layer.shadowColor = R.color.text_base()?.cgColor
+        self.layer.shadowRadius = 4.0
+        self.layer.shadowOpacity = 0.3
+        self.layer.masksToBounds = false
+        self.layer.shouldRasterize = true
+        self.layer.shadowOffset = CGSize(width: 0, height: 2)
+    }
+    
+    func rotate() {
+        let rotation : CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
+        rotation.toValue = NSNumber(value: Double.pi * 2)
+        rotation.duration = 1
+        rotation.isCumulative = true
+        rotation.repeatCount = Float.greatestFiniteMagnitude
+        self.layer.add(rotation, forKey: "rotationAnimation")
+    }
 }

@@ -8,21 +8,31 @@ class BaseViewController: UIViewController {
     
     private let headerHeight = 150
     
-    private let amountLabel: UILabel = {
+    private lazy var backButton: UIBarButtonItem = {
+        let button = UIBarButtonItem()
+        button.image = R.image.back_nav_icon()
+        button.tintColor = R.color.white()
+        button.action = #selector(backButtonDidPressed)
+        button.target = self
+        return button
+    }()
+    
+    private lazy var amountLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.textColor = R.color.white()
-        label.text = "₴ 12212"
-        label.shadow()
+        let amount = viewModel?.getHeaderAmount() ?? 0.0
+        label.text = "₴ " + "\(amount)"
+        label.setShadow()
         return label
     }()
     
-    private let subtitleLabel: UILabel = {
+    private lazy var subtitleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
         label.textColor = R.color.white()
-        label.text = "В этом месяце"
-        label.shadow()
+        label.text = viewModel?.getHeaderSubtitle()
+        label.setShadow()
         return label
     }()
     
@@ -32,24 +42,36 @@ class BaseViewController: UIViewController {
         return view
     }()
     
+    private var viewModel: BaseViewModelInterface?
+    
+    init(viewModel: BaseViewModelInterface?) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+        configureView()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.barStyle = .black
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
+        navigationItem.leftBarButtonItem = backButton
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.barStyle = .default
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = false
+        navigationItem.leftBarButtonItem = nil
     }
     
     override func viewDidLayoutSubviews() {
         headerView.addGradient()
-    }
-    
-    override func viewDidLoad() {
-        configureView()
     }
     
     private func configureView() {
@@ -82,6 +104,10 @@ class BaseViewController: UIViewController {
             $0.top.equalTo(amountLabel.snp.bottom).inset(-4)
             $0.centerX.equalToSuperview()
         }
+    }
+    
+    @objc private func backButtonDidPressed() {
+        navigationController?.popViewController(animated: true)
     }
     
 }

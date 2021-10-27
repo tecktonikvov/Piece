@@ -8,8 +8,8 @@ final class AddBaseInfoViewController: UIViewController, ChildPageViewController
     
     weak var delegate: AddEventStepsControllDelegate?
     
-    private let titleTextFielLabel = PTitleLabel(textColot: R.color.gray_dark(), fontSize: 16, text: "Название")
-    private let dateTextFielLabel = PTitleLabel(textColot: R.color.gray_dark(), fontSize: 16, text: "Дата")
+    private let titleTextFielLabel = PTitleLabel(textColor: R.color.gray_dark(), fontSize: 16, text: "Название")
+    private let dateTextFielLabel = PTitleLabel(textColor: R.color.gray_dark(), fontSize: 16, text: "Дата")
     
     private lazy var nextButton: PButton = {
         let button = PButton(title: "Далее")

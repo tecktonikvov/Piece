@@ -17,13 +17,13 @@ final class AddPurchaseViewModel: NSObject, AddPurchaseViewModelIntarface {
     public var addPurchaseBlock: (() -> Void)?
     public var updateBlock: (() -> Void)?
 
-    private var model = Purchase.mock {
+    private var model = PurchaseModel.mock {
         didSet {
             updateBlock?()
         }
     }
     
-    private var selectedPurchases = [Purchase]() {
+    private var selectedPurchases = [PurchaseModel]() {
         didSet {
             let totalPrice = selectedPurchases.reduce(0.0) { $0 + $1.price }
             updatePriceBlock?(totalPrice)
@@ -42,7 +42,7 @@ final class AddPurchaseViewModel: NSObject, AddPurchaseViewModelIntarface {
     public func createNewPurchase(title: String, price: String) {
         let lastId = model.map { $0.id }.max() ?? 1
         let floatPrice = Float(price) ?? 0.0
-        let purchase = Purchase(id: lastId + 1, title: title, price: floatPrice)
+        let purchase = PurchaseModel(id: lastId + 1, title: title, price: floatPrice, owner: nil)
         
         selectedPurchases.append(purchase)
         model.insert(purchase, at: 0)

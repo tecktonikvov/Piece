@@ -37,8 +37,8 @@ final class AddPurchaseViewController: UIViewController, ChildPageViewController
         return view
     }()
         
-    private let itemLabel = PTitleLabel(textColot: R.color.gray_darkest(), fontSize: 16, text: "Название")
-    private let priceLabel = PTitleLabel(textColot: R.color.gray_darkest(), fontSize: 16, text: "Цена")
+    private let itemLabel = PTitleLabel(textColor: R.color.gray_darkest(), fontSize: 16, text: "Название")
+    private let priceLabel = PTitleLabel(textColor: R.color.gray_darkest(), fontSize: 16, text: "Цена")
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)

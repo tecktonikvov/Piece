@@ -16,13 +16,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = navigationController
+       // window?.rootViewController = navigationController
        
-        //let mainController = getViewController()
-        let viewModel = EventListViewModel()
-        let mainController = EventListViewController(viewModel: viewModel)
+       // let mainController = getViewController()
+        
+//        let viewModel = EventListViewModel()
+//        let mainController = EventListViewController(viewModel: viewModel)
+        
+//        let viewModel = EventDetailViewModel(event: EventModel.mockItem)
+//        let mainController = EventDetailViewController(viewModel: viewModel)
 
-        navigationController.addChild(mainController)
+//        let viewModel = PurchasesListViewModel(event: EventModel.mockItem)
+        //        let mainController = PurchasesListViewController(viewModel: viewModel)
+        //et mainController: EventListViewController = self.stor
+
+        let storyboard = UIStoryboard(name: "PurchasesViewController", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "PurchasesViewController")
+        window?.rootViewController = vc
+       // navigationController.addChild(mainController)
         window?.makeKeyAndVisible()
     }
     
